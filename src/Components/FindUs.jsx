@@ -8,7 +8,7 @@ const FindUs = () => {
       <h1 className="font-semibold mb-3 mt-8">Find Us On</h1>
 
       <button className="flex justify-start gap-2 items-center p-2 w-full  text-black border-2 ">
-        <img className="w-7" src={In} alt="" />
+        <img className="w-4" src={fb} alt="" />
         <h1 className="font-bold">Facebook</h1>
       </button>
       <button className="flex justify-start gap-2 items-center p-2 w-full  text-black border-2  ">
