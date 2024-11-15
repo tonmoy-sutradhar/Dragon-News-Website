@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
+  const [err, setErr] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -10,6 +11,10 @@ const Register = () => {
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
+    if (password.length < 8) {
+      setErr({ ...err, password: "Password must be more than 8 char." });
+      return;
+    }
     // console.log({ name, photo, email, password });
 
     createNewUser(email, password)
@@ -77,6 +82,11 @@ const Register = () => {
               className="input rounded-none bg-[#F3F3F3]"
               required
             />
+            {err.password && (
+              <label className="label text-sm text-red-600">
+                {err.password}
+              </label>
+            )}
             {/* <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
