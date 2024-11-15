@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const [err, setErr] = useState("");
   const location = useLocation();
   console.log("LOGIN PAGE --", location);
 
@@ -24,7 +25,8 @@ const Login = () => {
         // console.log(result.user);
       })
       .catch((error) => {
-        alert(error.message);
+        // alert(error.message);
+        setErr(error.message);
         console.log("ERROR from LOGIN --", error.message);
       });
   };
@@ -58,11 +60,7 @@ const Login = () => {
               className="input rounded-none bg-[#F3F3F3]"
               required
             />
-            {/* <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label> */}
+            {<label className="label text-sm text-red-600">{err}</label>}
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-active bg-gray-500 text-white rounded-none">
