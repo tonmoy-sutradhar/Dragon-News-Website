@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  console.log("LOGIN PAGE --", location);
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -16,7 +19,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(result.user);
+        // state thakle data load hbe na hole home page e pathiye dibe
+        navigate(location?.state ? location.state : "/");
+        // console.log(result.user);
       })
       .catch((error) => {
         alert(error.message);
