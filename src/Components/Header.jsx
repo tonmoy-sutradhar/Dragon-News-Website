@@ -1,6 +1,7 @@
 import moment from "moment";
 import logo from "../assets/logo.png";
 const Header = () => {
+  // console.log(import.meta.env.VITE_a);
   return (
     <div>
       <div className="w-[400px] mx-auto py-2">

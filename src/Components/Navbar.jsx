@@ -22,7 +22,19 @@ const Navbar = () => {
         <Link to="about">ABOUT</Link>
       </div>
       <div className="flex gap-1 items-center">
-        <img className="w-11 rounded-full" src={profile} alt="" />
+        {user && user?.email ? (
+          <div className="flex justify-center items-center gap-2 ">
+            <img
+              className="w-11 rounded-full"
+              src={user?.photoURL}
+              alt="Profile-Photo"
+            />
+            <p className="mr-2 text-blue-500">{user?.displayName}</p>
+          </div>
+        ) : (
+          <img className="w-11 rounded-full" src={profile} alt="" />
+        )}
+
         {user && user?.email ? (
           <button onClick={logOut} className="bg-gray-500 px-4 py-1 text-white">
             Log-out
