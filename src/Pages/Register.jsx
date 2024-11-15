@@ -27,12 +27,12 @@ const Register = () => {
             navigate("/");
           })
           .catch((err) => {
-            console.log("ERROR PROFILE --", err);
+            // console.log("ERROR PROFILE --", err);
           });
         // console.log(user);
       })
       .catch((error) => {
-        console.log("ERROR from REGISTER--", error.message);
+        // console.log("ERROR from REGISTER--", error.message);
       });
   };
   return (

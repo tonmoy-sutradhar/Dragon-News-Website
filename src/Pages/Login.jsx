@@ -6,7 +6,7 @@ const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
   const [err, setErr] = useState("");
   const location = useLocation();
-  console.log("LOGIN PAGE --", location);
+  // console.log("LOGIN PAGE --", location);
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -14,7 +14,7 @@ const Login = () => {
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
-    console.log({ email, password });
+    // console.log({ email, password });
 
     userLogin(email, password)
       .then((result) => {
@@ -27,7 +27,7 @@ const Login = () => {
       .catch((error) => {
         // alert(error.message);
         setErr(error.message);
-        console.log("ERROR from LOGIN --", error.message);
+        // console.log("ERROR from LOGIN --", error.message);
       });
   };
   return (
